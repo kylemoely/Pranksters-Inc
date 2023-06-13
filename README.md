@@ -31,4 +31,4 @@ Client
     tailwindcss
     jwt-decode
 
-    test
+  
