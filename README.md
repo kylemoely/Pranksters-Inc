@@ -30,3 +30,5 @@ Client
     context-api
     tailwindcss
     jwt-decode
+
+    test
