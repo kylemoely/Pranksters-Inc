@@ -30,3 +30,5 @@ Web service for pranking your friends
     context-api
     tailwindcss
     jwt-decode
+
+    test
