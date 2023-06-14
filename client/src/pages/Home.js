@@ -1,12 +1,12 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_USERS, QUERY_POSTS } from '../utils/queries'; // Update the import statements
+import { QUERY_USER, QUERY_PRANKS } from '../utils/queries';
 
-const Home = () => {
-  const { loading: usersLoading, error: usersError, data: userData } = useQuery(QUERY_USERS); // Update the constant name
-  const { loading: postsLoading, error: postsError, data: postData } = useQuery(QUERY_POSTS); // Update the constant name
+const HomePage = () => {
+  const { loading: usersLoading, error: usersError, data: userData } = useQuery(QUERY_USER);
+  const { loading: pranksLoading, error: pranksError, data: pranksData } = useQuery(QUERY_PRANKS);
 
-  if (usersLoading || postsLoading) {
+  if (usersLoading || pranksLoading) {
     return <div>Loading...</div>;
   }
 
@@ -14,17 +14,17 @@ const Home = () => {
     return <div>Error: {usersError.message}</div>;
   }
 
-  if (postsError) {
-    return <div>Error: {postsError.message}</div>;
+  if (pranksError) {
+    return <div>Error: {pranksError.message}</div>;
   }
 
   const users = userData?.users || [];
-  const posts = postData?.posts || [];
+  const pranks = pranksData?.pranks || [];
 
   return (
     <div>
       <h1>Home Page</h1>
-      
+
       <h2>Users</h2>
       {users.map((user) => (
         <div key={user.id}>
@@ -33,17 +33,17 @@ const Home = () => {
           <p>Email: {user.email}</p>
         </div>
       ))}
-      
-      <h2>Posts</h2>
-      {posts.map((post) => (
-        <div key={post.id}>
-          <h3>Post ID: {post.id}</h3>
-          <p>Title: {post.title}</p>
-          <p>Content: {post.content}</p>
+
+      <h2>Pranks</h2>
+      {pranks.map((prank) => (
+        <div key={prank.id}>
+          <h3>Prank ID: {prank.id}</h3>
+          <p>Title: {prank.title}</p>
+          <p>Description: {prank.description}</p>
         </div>
       ))}
     </div>
   );
 };
 
-export default Home;
+export default HomePage;
