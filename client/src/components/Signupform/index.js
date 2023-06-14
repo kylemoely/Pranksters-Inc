@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations'; // Update the import statement
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ const SignupForm = () => {
     password: '',
   });
 
-  const [signupUser, { loading, error }] = useMutation(SIGNUP_USER);
+  const [signupUser, { loading, error }] = useMutation(ADD_USER); // Update the constant name
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

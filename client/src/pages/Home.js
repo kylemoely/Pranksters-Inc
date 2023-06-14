@@ -1,11 +1,10 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import { QUERY_USERS, QUERY_POSTS } from '../utils/queries';
+import { QUERY_USERS, QUERY_POSTS } from '../utils/queries'; // Update the import statements
 
-
-const HomePage = () => {
-  const { loading: usersLoading, error: usersError, data: userData } = useQuery(GET_USERS);
-  const { loading: postsLoading, error: postsError, data: postData } = useQuery(GET_POSTS);
+const Home = () => {
+  const { loading: usersLoading, error: usersError, data: userData } = useQuery(QUERY_USERS); // Update the constant name
+  const { loading: postsLoading, error: postsError, data: postData } = useQuery(QUERY_POSTS); // Update the constant name
 
   if (usersLoading || postsLoading) {
     return <div>Loading...</div>;
@@ -47,4 +46,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
