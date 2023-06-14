@@ -9,13 +9,9 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
+  
   dateTime: {
-    type: Date,
+    type: String,
     required: true
   },
   prank: {

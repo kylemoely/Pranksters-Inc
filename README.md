@@ -2,18 +2,18 @@
 Web service for pranking your friends
 
 
-Database
+## Database
 
     Pranks - title, price, description, in person or mail-in
     Users - username, password, email
     Order - prankee(location, name, date/time), prank, user
 
-graphQL
+## graphQL
 
     query - readPranks(reads all prank options), readOrders(loads all pranks ordered by user)
     mutations - addUser, deleteUser, updateUser, createOrder, deleteOrder, updateOrder
 
-backend
+## backend
 
     express
     apollo/server
@@ -22,7 +22,7 @@ backend
     mongoose
     bcrypt
 
-Client
+## Client
 
     Login (JWT)
     Apollo/client
