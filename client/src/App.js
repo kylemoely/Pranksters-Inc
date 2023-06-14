@@ -3,7 +3,7 @@ import './App.css';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  uri: 'https://boiling-beyond-75815.herokuapp.com/',
   cache: new InMemoryCache()
 })
 
