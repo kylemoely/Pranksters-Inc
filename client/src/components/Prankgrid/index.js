@@ -7,7 +7,7 @@ import pic from './images/prank.png'
 
 const Prankgrid = () => {
     const { loading, data } = useQuery(QUERY_PRANKS);
-    const Pranks = data?.viewPrank || [];
+    const Pranks = data?.viewPranks || [];
     console.log(data);
     
     
