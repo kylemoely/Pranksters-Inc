@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -19,7 +19,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
+      <HashRouter basename="/">
         <Header />
         <div className = "container">
           <Routes>
@@ -41,7 +41,7 @@ function App() {
           </Routes>
         </div>
         <Footer/>
-      </Router>
+      </HashRouter>
     </ApolloProvider>
 
   );
