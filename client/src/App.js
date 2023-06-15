@@ -7,12 +7,12 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Pranks from './pages/Pranks';
-// import Orders from './pages/Orders';
+import Orders from './pages/Orders';
 
 import './App.css';
 
 const client = new ApolloClient({
-  uri: 'https://boiling-beyond-75815.herokuapp.com/',
+  uri: '/graphql',
   cache: new InMemoryCache()
 });
 
@@ -35,9 +35,9 @@ function App() {
             <Route 
             path="/pranks"
             element={<Pranks />} />
-            {/* <Route 
+            <Route 
             path="/orders"
-            element={<Orders />} /> */}
+            element={<Orders />} />
           </Routes>
         </div>
         <Footer/>
