@@ -13,7 +13,7 @@ const Pranks = () => {
     <main>
       <div className="flex-row justify-center">
         <div>
-        <h1 style={{textAlign:'center'}}>Pick a Prank</h1>
+        <h1 style={{marginLeft: '600px', fontSize: '50px' }}>Pick a Prank</h1>
         </div>
         <div className="col-12 col-md-8 mb-3">
           {loading ? (
