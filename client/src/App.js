@@ -12,7 +12,7 @@ import Pranks from './pages/Pranks';
 import './App.css';
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  uri: 'https://boiling-beyond-75815.herokuapp.com/',
   cache: new InMemoryCache()
 });
 
