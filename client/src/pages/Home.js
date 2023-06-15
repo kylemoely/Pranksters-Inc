@@ -35,13 +35,23 @@ const HomePage = () => {
       ))}
 
       <h2>Pranks</h2>
-      {pranks.map((prank) => (
-        <div key={prank.id}>
-          <h3>Prank ID: {prank.id}</h3>
-          <p>Title: {prank.title}</p>
-          <p>Description: {prank.description}</p>
-        </div>
-      ))}
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {pranks.map((prank) => (
+          <div className="col" key={prank.id}>
+            <div className="card h-100">
+              <div className="card-body">
+                <h5 className="card-title">{prank.title}</h5>
+                <p className="card-text">{prank.description}</p>
+              </div>
+              <div className="card-footer">
+                <small className="text-body-secondary">
+                  Last updated 3 mins ago
+                </small>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

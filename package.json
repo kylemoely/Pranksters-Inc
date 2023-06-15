@@ -10,7 +10,8 @@
     "build": "cd client && npm run build",
     "start": "npm run build && cd server && node server.js && cd seeders && node seed.js",
     "server": "cd server && nodemon server.js",
-    "client": "cd client && npm start"
+    "client": "cd client && npm start",
+    "seed": "node seed.js"
   },
   "keywords": [],
   "author": "",
