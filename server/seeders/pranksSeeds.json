@@ -1,0 +1,33 @@
+[
+    {
+        "title": "Prank Call",
+        "price": 10,
+        "description": "We will call your friend and pretend to be an ex",
+        "inPerson": false
+    },
+    {
+        "title": "Partner Prank",
+        "price": 20,
+        "description": "We can call you while you are with your partner to confirm a online order of $20,000",
+        "inPerson": false
+    },
+    {
+        "title": "Car Note",
+        "price": 25,
+        "description": "A team member will completely cover their car in sticky notes",
+        "inPerson": true
+    },
+    {
+        "title": "Roomate Prank",
+        "price": 40,
+        "description": "A team member will come in and gift wrap all your roomate's belongings",
+        "inPerson": true
+    },
+    {
+        "title": "Tow Truck",
+        "price": 50,
+        "description": "A fake repo man will come and try to repo their car in front of them",
+        "inPerson": true
+    }
+    
+  ]
