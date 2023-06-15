@@ -1,6 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Header from './components/Header';
+import Footer from './components/Footer'
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Orders from './pages/Orders';
+import Pranks from './pages/Pranks';
+import Signup from './pages/Signup'
 
 const client = new ApolloClient({
   uri: 'https://boiling-beyond-75815.herokuapp.com/',
