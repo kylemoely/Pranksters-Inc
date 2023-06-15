@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations'; // Update the import statement
+import { VIEW_USER } from '../utils/mutations';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ const Signup = () => {
     password: '',
   });
 
-  const [signupUser, { loading, error }] = useMutation(ADD_USER); // Update the constant name
+  const [viewUser, { loading, error }] = useMutation(VIEW_USER);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,14 +18,15 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await signupUser({
+      const { data } = await viewUser({
         variables: {
           username: formData.username,
           email: formData.email,
           password: formData.password,
         },
       });
-      // Handle successful signup, e.g., redirect to login page
+      // Handle user data returned from the server
+      console.log(data.viewUser);
     } catch (error) {
       console.log(error);
       // Handle error, e.g., display error message to the user

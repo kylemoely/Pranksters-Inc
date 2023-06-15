@@ -11,7 +11,7 @@ import Orders from './pages/Orders';
 import './App.css';
 
 const client = new ApolloClient({
-  uri: 'https://boiling-beyond-75815.herokuapp.com/',
+  uri: 'http://localhost:3001/graphql',
   cache: new InMemoryCache()
 });
 
