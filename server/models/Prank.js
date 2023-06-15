@@ -21,6 +21,6 @@ const pranksSchema = new Schema({
     }
 });
 
-const Pranks = model("Pranks", pranksSchema, "Pranks");
+const Prank = model("Prank", pranksSchema, "Prank");
 
-module.exports = Pranks;
+module.exports = Prank;

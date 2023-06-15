@@ -1,17 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
-import Header from './components/header';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+// import Header from './components/Header';
+// import Home from './pages/Home';
+// import Login from './pages/Login';
+// import Signup from './pages/Signup';
 import Pranks from './pages/Pranks';
-import Orders from './pages/Orders';
+// import Orders from './pages/Orders';
 
 import './App.css';
 
 const client = new ApolloClient({
-  uri: 'https://boiling-beyond-75815.herokuapp.com/',
+  uri: 'http://localhost:3001/graphql',
   cache: new InMemoryCache()
 });
 
@@ -19,24 +19,24 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <Header />
+        {/* <Header /> */}
         <div className = "container">
           <Routes>
-            <Route
+            {/* <Route
             path="/"
             element={<Home />} />
             <Route
             path="/login"
-            element={<Login />} />
-            <Route
+            element={<Login />} /> */}
+            {/* <Route
             path="/signup"
-            element={<Signup />} />
+            element={<Signup />} /> */}
             <Route 
             path="/pranks"
             element={<Pranks />} />
-            <Route 
+            {/* <Route 
             path="/orders"
-            element={<Orders />} />
+            element={<Orders />} /> */}
           </Routes>
         </div>
       </Router>
@@ -44,7 +44,5 @@ function App() {
 
   );
 }
-<div className="text-3xl font-bold underline bg-amber-600">
-        Is this thing on?
-      </div>
+
 export default App;

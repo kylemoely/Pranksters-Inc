@@ -13,13 +13,15 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_PRANKS = gql`
-    query viewPrank {
-        _id
-        description
-        inPerson
-        price
-        title
-    }
+query seeAllPranks{
+  viewPrank {
+    description
+    inPerson
+    price
+    title
+    _id
+  }
+}
 `;
 
 export const QUERY_ORDERS = gql`

@@ -1,3 +1,8 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities
+@tailwind utilities */
+
+.purchase {
+   text-align: center;
+   border-radius: 50px solid black;
+}
