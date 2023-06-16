@@ -3,57 +3,85 @@ import { useMutation } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
 
   const [loginUser, { loading, error }] = useMutation(QUERY_USER);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const { data } = await loginUser({
-        variables: { email, password },
+        variables: {
+          email: formData.email,
+          password: formData.password,
+        },
       });
 
-      // Clear form inputs
-      setEmail('');
-      setPassword('');
+      setFormData({
+        email: '',
+        password: '',
+      });
 
-      // Handle successful login, e.g., redirect to another page or update app state
       console.log('Logged in successfully:', data);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   return (
     <div>
-      <h1>Login Page</h1>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          Login
-        </button>
-        {error && <div>Error: {error.message}</div>}
-      </form>
+      <Container style={{ margin: '100px 500px' }}>
+        <Row>
+          <Card style={{ width: '30rem', margin: '20px', display: 'block' }}>
+            <Card.Body style={{ textAlign: 'center' }}>
+              <Card.Title style={{ color: 'red', fontSize: '30px' }}>Login</Card.Title>
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                </div>
+                <Button
+                  style={{
+                    border: 'solid black',
+                    borderRadius: '1rem',
+                    backgroundColor: 'lightGreen',
+                    marginTop: '10px',
+                  }}
+                  variant="primary"
+                  type="submit"
+                  disabled={loading}
+                >
+                  Log In
+                </Button>
+                {error && <p>Error: {error.message}</p>}
+              </form>
+            </Card.Body>
+          </Card>
+        </Row>
+      </Container>
     </div>
   );
 };
