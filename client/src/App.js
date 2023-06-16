@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Pranks from './pages/Pranks';
 import Orders from './pages/Orders';
+import OrderHistory from './pages/OrderHistory'
 
 import './App.css';
 
@@ -38,6 +39,9 @@ function App() {
             <Route 
             path="/orders"
             element={<Orders />} />
+            <Route 
+            path='/orderHistory'
+            element = {<OrderHistory />} />
           </Routes>
         </div>
         <Footer/>
