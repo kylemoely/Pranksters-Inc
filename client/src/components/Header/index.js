@@ -9,7 +9,7 @@ export default function Navbar({ fixed }) {
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-              href=""
+              href="/"
             >
               Pranksters-INC
             </a>
@@ -28,18 +28,7 @@ export default function Navbar({ fixed }) {
             }
             id=""
           >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="/signup"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Sign-Up</span>
-                </a>
-              </li>
-              
-              
-            </ul>
+            
           </div>
         </div>
       </nav>
