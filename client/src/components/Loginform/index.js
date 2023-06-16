@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { VIEW_USER } from '../utils/mutations';
+import { QUERY_USER } from '../../utils/queries';
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [loginUser, { loading, error }] = useMutation(VIEW_USER);
+  const [loginUser, { loading, error }] = useMutation(QUERY_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
