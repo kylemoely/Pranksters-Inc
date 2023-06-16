@@ -1,12 +1,13 @@
 import React from 'react';
 import SignupForm from '../components/Signupform/index';
+
 const Signup = () => {
   return (
-    <main>
-      <div className="flex-row justify-center">
-        <SignupForm />
-      </div>
-    </main>
+    <div style={{ textAlign: 'center' }}>
+      <h1 style={{ fontSize: '50px' }}>Signup Page</h1>
+      <SignupForm />
+    </div>
   );
 };
+
 export default Signup;
