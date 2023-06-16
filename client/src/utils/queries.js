@@ -4,9 +4,7 @@ export const QUERY_USER = gql`
   query Query($userId: ID!) {
     viewUser(userId: $userId) {
       _id
-      orders {
-        _id
-      }
+      orders
       email
       password
       username
@@ -19,9 +17,7 @@ export const QUERY_USERS = gql`
     viewUsers(userId: $userId) {
       _id
       email
-      orders {
-        _id
-      }
+      orders
       password
       username
     }

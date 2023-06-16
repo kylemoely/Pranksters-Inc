@@ -37,7 +37,7 @@ const resolvers = {
             const order = await Order.create(args);
             const user = await User.findOneAndUpdate(
                 { _id: args.user },
-                { $addToSet: { orders: order._id } },
+                { $push: { orders: order._id.toString() } },
                 { new: true }
             );
             return order;            
@@ -58,7 +58,7 @@ const resolvers = {
             const order = await Order.findOne({ _id: orderId });
             const user = await User.findOneAndUpdate(
                 { _id: order.user._id },
-                { $pull: { orders: { _id: orderId } } },
+                { $pull: { orders: orderId } },
                 { new: true }
             );
 

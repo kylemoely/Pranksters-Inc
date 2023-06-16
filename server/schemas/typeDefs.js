@@ -6,7 +6,7 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
-        orders: [Order]
+        orders: [String]
     }
     type Prank {
         _id: ID
