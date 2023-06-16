@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
   },
   orders: {
-    type: [String],
+    type: Array,
     default: [],
   },
 });

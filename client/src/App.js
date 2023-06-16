@@ -7,19 +7,23 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Pranks from './pages/Pranks';
-import Orders from './pages/Orders';
+// import Orders from './pages/Orders';
 
 import './App.css';
 
 const client = new ApolloClient({
+<<<<<<< HEAD
   uri: 'http://localhost:3001/graphql',
+=======
+  uri: '/graphql',
+>>>>>>> c0e3b7e72a51aa83bd29de7fc4a2b055c6954dd9
   cache: new InMemoryCache()
 });
 
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
+      <Router basename="/">
         <Header />
         <div className = "container">
           <Routes>
@@ -35,9 +39,9 @@ function App() {
             <Route 
             path="/pranks"
             element={<Pranks />} />
-            <Route 
+            {/* <Route 
             path="/orders"
-            element={<Orders />} />
+            element={<Orders />} /> */}
           </Routes>
         </div>
         <Footer/>

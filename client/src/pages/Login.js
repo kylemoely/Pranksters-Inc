@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { VIEW_USER } from '../utils/mutations';
+import { useQuery } from '@apollo/client';
+import { QUERY_USER } from '../utils/queries';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ const LoginPage = () => {
     password: '',
   });
 
-  const [loginUser, { loading, error }] = useMutation(VIEW_USER);
+  const [loginUser, { loading, error }] = useQuery(QUERY_USER);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

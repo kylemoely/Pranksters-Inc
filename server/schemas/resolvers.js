@@ -2,16 +2,24 @@ const { User, Prank, Order } = require('../models');
 
 const resolvers = {
     Query: {
-        viewUser: async () => {
+        viewUser: async (_, { userId }) => {
+            return await User.findOne({ _id: userId });
+        },
+        viewUsers: async (_, args) => {
             return await User.find();
         },
-        viewPrank: async () => {
+        viewPrank: async (_, { prankId }) => {
+            return await Prank.findOne({ _id: prankId });
+        },
+        viewPranks: async (_, args) => {
             return await Prank.find();
         },
-        viewOrder: async () => {
-            return await Order.find();
+        viewOrder: async (_, { orderId }) => {
+            return await Order.findOne({ _id: orderId });
+        },
+        viewUserOrders: async (_, { userId }) => {
+            return await Order.find({ user: userId })
         }
-        
     }, 
 
     Mutation: {
@@ -26,10 +34,44 @@ const resolvers = {
            return prank;
        },
        addOrder: async (_, args) => {
-        const order = await Order.create(args);
+            const order = await Order.create(args);
+            const user = await User.findOneAndUpdate(
+                { _id: args.user },
+                { $push: { orders: order._id.toString() } },
+                { new: true }
+            );
+            return order;            
+        },
+        deleteUser: async (_, { userId }) => {
+            const user = await User.findOneAndDelete({ _id: userId });
+            return user;
+        },
+        updateUser: async (_, args) => {
+            const user = await User.findOneAndUpdate(
+                { _id: args.userId },
+                { $set: args },
+                { runValidators: true, new: true}
+            );
+            return user;
+        },
+        deleteOrder: async (_, { orderId }) => {
+            const order = await Order.findOne({ _id: orderId });
+            const user = await User.findOneAndUpdate(
+                { _id: order.user._id },
+                { $pull: { orders: orderId } },
+                { new: true }
+            );
 
-       return order;
-   }
+            return await Order.findOneAndDelete({ _id: orderId });
+        },
+        updateOrder: async (_, args) => {
+            const order = await Order.findOneAndUpdate(
+                { _id: args.orderId },
+                { $set: args },
+                { runValidators: true, new: true}
+            );
+            return order;
+        }
     }
 };
 

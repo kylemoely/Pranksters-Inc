@@ -6,7 +6,7 @@ const typeDefs = gql`
         username: String
         email: String
         password: String
-        orders: [Order]
+        orders: [String]
     }
     type Prank {
         _id: ID
@@ -24,14 +24,21 @@ const typeDefs = gql`
         user: User
     }
     type Query {
-        viewUser: [User]
-        viewPrank: [Prank]
-        viewOrder: [Order]
+        viewUser(userId: ID!): User
+        viewUsers(userId: ID): [User]
+        viewPrank(prankId: ID!): Prank
+        viewPranks(prankID: ID): [Prank]
+        viewOrder(orderId: ID!): Order
+        viewUserOrders(userId: ID!): [Order]
     }
     type Mutation {
         addUser(username: String!, email: String!, password: String!): User
         addPrank(title: String!, price: Int!, description: String!, inPerson: Boolean!): Prank
         addOrder(location: String!, prankee: String!, prank: ID!, dateTime: String!, user: ID!): Order
+        deleteUser(userId: ID!): User
+        updateUser(userId: ID!, email: String, username: String, password: String): User
+        deleteOrder(orderId: ID!): Order
+        updateOrder(orderId: ID!, location: String, prankee: String, prank: ID, dateTime: String, user: ID): Order
     }
 `;
 
