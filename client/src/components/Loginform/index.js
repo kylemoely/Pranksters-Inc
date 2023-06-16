@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
+import { Container } from 'react-bootstrap';
+
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     email: '',
@@ -25,12 +27,12 @@ const LoginForm = () => {
     }
   };
   return (
+    <Container style={{ textAlign: 'center'}}>
     <div>
-      <h1>Login Page</h1>
-      <form onSubmit={handleSubmit}>
+      <form style={{margin: '150px' }} onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="email">Email</label>
-          <input
+          <label style={{margin: '150px' }} htmlFor="email">Email</label>
+          <input style={{ border: 'solid black', width: '200px' }} 
             type="email"
             id="email"
             name="email"
@@ -38,9 +40,9 @@ const LoginForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
+        <div style={{marginTop: '20px'}}  >
+          <label style={{margin: '135px'}} htmlFor="password">Password</label>
+          <input style={{ border: 'solid black', width: '200px' }} 
             type="password"
             id="password"
             name="password"
@@ -48,12 +50,13 @@ const LoginForm = () => {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" disabled={loading}>
+        <button style={{marginTop: '30px',  backgroundColor: 'lightBlue', border: 'solid black', borderRadius: '1rem', padding: '10px', marginLeft: '30px'}} type="submit" disabled={loading}>
           Log In
         </button>
-        {error && <p>Error: {error.message}</p>}
+        {error && <p style={{marginTop: '20px'}}>Error: {error.message}</p>}
       </form>
     </div>
+    </Container>
   );
 };
 export default LoginForm;

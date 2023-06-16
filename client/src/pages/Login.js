@@ -3,7 +3,7 @@ import LoginForm from '../components/Loginform/index';
 const Login = () => {
   return (
     <div>
-      <h1>Login Page</h1>
+      <h1 style={{marginLeft: '600px', fontSize: '50px' }}>Login Page</h1>
       <LoginForm />
     </div>
   );
