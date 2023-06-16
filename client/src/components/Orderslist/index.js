@@ -1,30 +1,48 @@
-import React from 'react';
+import {React} from 'react';
+import { QUERY_USER_ORDERS, QUERY_PRANK } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import { VIEW_ORDERS } from '../utils/queries'; 
+import { Button, Card, Row, Container } from 'react-bootstrap';
 
-const OrdersList = () => {
-  
-    const { loading, data } = useQuery(VIEW_ORDERS); 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+const Orderslist = () => {
+    const { loading: ordersLoading, error: ordersError, data: orderData } = useQuery(QUERY_USER_ORDERS, {
+        variables: {}
+    });
+    const orders = data?.viewUserOrders || [];
+    if(ordersError){
+        return <div>Error: No orders found!</div>
+    }
 
-  const orders = data?.orders || [];
-
-  return (
-    <div>
-      <h1>Orders List</h1>
-      {orders.length === 0 ? (
-        <div>No orders available</div>
-      ) : (
-        <ul>
-          {orders.map((order) => (
-            <li key={order.id}>{order.name}</li> // Replace 'name' with the relevant property of your order object
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            {ordersLoading ?
+            <div> Loading...</div>
+        : <div style={{ margin:'100px 500px'}}>
+        {orders.map((order, i) => {
+            const { prank } = order;
+            const { data: prankData } = useQuery(QUERY_PRANK, {
+                variables: { prank }
+            })
+            return (
+        <Container fluid key={i}>
+         <Row>
+         <Card style={{ width: '30rem', margin: '20px', display:'block'}}>
+            <Card.Body style={{ textAlign: 'center'}}>
+            <Card.Title style={{color: 'red', fontSize: '30px' }} >Prank: {prankData.title}</Card.Title>
+            <Card.Text >Prankee: {order.prankee}</Card.Text>
+            <Card.Text >Location: {order.location}</Card.Text>
+            <Card.Text >Time: {order.dateTime}</Card.Text>
+            <Button style={{ border: 'solid black', borderRadius: '1rem', backgroundColor: 'lightGreen' }} variant="primary">Edit Order</Button>
+            <Button style={{ border: 'solid black', borderRadius: '1rem', backgroundColor: 'lightGreen' }} variant="primary">Delete Order</Button>
+            </Card.Body>
+            </Card>
+            </Row>
+            </Container>
+            )
+            })}
+       </div>}
+        </div>
+    )
+    
 };
 
-export default OrdersList;
+export default Orderslist;
