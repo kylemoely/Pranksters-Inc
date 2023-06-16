@@ -8,7 +8,7 @@ import {QUERY_PRANKS} from '../utils/queries';
 const Pranks = () => {
   const { loading, data } = useQuery(QUERY_PRANKS);
   const pranks = data?.pranks || [];
-
+  
   return (
     <main>
       <div className="flex-row justify-center">
