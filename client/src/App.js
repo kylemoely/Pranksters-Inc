@@ -7,9 +7,11 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Pranks from './pages/Pranks';
-// import Orders from './pages/Orders';
+import Orders from './pages/Orders';
+
 
 import './App.css';
+import Orderform from './pages/Orderforms';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -35,9 +37,12 @@ function App() {
             <Route 
             path="/pranks"
             element={<Pranks />} />
-            {/* <Route 
+            <Route 
+            path="/pranks/{Prank._id}"
+            element={<Orderform />} /> 
+            <Route 
             path="/orders"
-            element={<Orders />} />  */}
+            element={<Orders />} /> 
           </Routes>
         </div>
         <Footer/>
