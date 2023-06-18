@@ -1,7 +1,8 @@
 import {React} from 'react';
 import { QUERY_PRANKS } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
-import { Button, Card, Row, Container } from 'react-bootstrap';
+import { Card, Row, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import pic from './images/prank.png'
 
 
@@ -26,7 +27,7 @@ const Prankgrid = () => {
                     <Card.Title style={{color: 'red', fontSize: '30px' }} >{Prank.title}</Card.Title>
                     <Card.Text >{Prank.description}</Card.Text>
                     <Card.Text style={{color: 'blue' }}>Price: ${Prank.price}.00</Card.Text>
-                    <Button style={{ border: 'solid black', borderRadius: '1rem', backgroundColor: 'lightGreen' }} variant="primary" href="/pranks/{Prank._id}">Purchase Prank Code: {Prank._id}</Button>
+                    <Link style={{ border: 'solid black', borderRadius: '1rem', backgroundColor: 'lightBlue', padding: '2px' }} variant="primary" to={`/pranks/${Prank._id}`}>Purchase Prank Code: {Prank._id}</Link>
                     </Card.Body>
                     </Card>
                     </Row>

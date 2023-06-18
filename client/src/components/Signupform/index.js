@@ -44,8 +44,7 @@ const SignupForm = () => {
       <div>
         <form style={{ margin: '150px' }} onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="username">Username</label>
-            <br />
+            <label style={{margin: '120px'}} htmlFor="username">Username :</label>
             <input
               type="text"
               id="username"
@@ -56,8 +55,7 @@ const SignupForm = () => {
             />
           </div>
           <div style={{ marginTop: '20px' }}>
-            <label htmlFor="email">Email</label>
-            <br />
+            <label style={{margin: '135px'}} htmlFor="email">Email :</label>
             <input
               type="email"
               id="email"
@@ -68,8 +66,7 @@ const SignupForm = () => {
             />
           </div>
           <div style={{ marginTop: '20px' }}>
-            <label htmlFor="password">Password</label>
-            <br />
+            <label style={{margin: '120px'}} htmlFor="password">Password :</label>
             <input
               type="password"
               id="password"
@@ -79,7 +76,7 @@ const SignupForm = () => {
               style={{ border: 'solid black', width: '200px' }}
             />
           </div>
-          <Button type="submit" disabled={loading}>
+          <Button style={{marginTop: '30px',  backgroundColor: 'lightBlue', border: 'solid black', borderRadius: '1rem', padding: '10px'}} type="submit" disabled={loading}>
             Sign Up
           </Button>
           {error && <p>Error: {error.message}</p>}

@@ -31,7 +31,7 @@ const LoginForm = () => {
     <div>
       <form style={{margin: '150px' }} onSubmit={handleSubmit}>
         <div>
-          <label style={{margin: '150px' }} htmlFor="email">Email</label>
+          <label style={{margin: '150px' }} htmlFor="email">Email :</label>
           <input style={{ border: 'solid black', width: '200px' }} 
             type="email"
             id="email"
@@ -41,7 +41,7 @@ const LoginForm = () => {
           />
         </div>
         <div style={{marginTop: '20px'}}  >
-          <label style={{margin: '135px'}} htmlFor="password">Password</label>
+          <label style={{margin: '135px'}} htmlFor="password">Password :</label>
           <input style={{ border: 'solid black', width: '200px' }} 
             type="password"
             id="password"
@@ -53,7 +53,7 @@ const LoginForm = () => {
         <button style={{marginTop: '30px',  backgroundColor: 'lightBlue', border: 'solid black', borderRadius: '1rem', padding: '10px', marginLeft: '30px'}} type="submit" disabled={loading}>
           Log In
         </button>
-        {error && <p style={{marginTop: '20px'}}>Error: {error.message}</p>}
+        {error && <p style={{marginTop: '40px'}}>Error: {error.message}</p>}
       </form>
     </div>
     </Container>

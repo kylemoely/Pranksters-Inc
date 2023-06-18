@@ -38,7 +38,7 @@ function App() {
             path="/pranks"
             element={<Pranks />} />
             <Route 
-            path="/pranks/{Prank._id}"
+            path="/pranks/:prankId"
             element={<Orderform />} /> 
             <Route 
             path="/orders"

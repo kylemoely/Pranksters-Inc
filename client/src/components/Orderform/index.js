@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import { QUERY_PRANK } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
 
 const OrderForm = () => {
-    const { loading, data } = useQuery(QUERY_PRANK);
-    const Prank = data?.viewPranks|| [];
-    console.log(data);
 
-
-    // return (
-        // <div>
-        //     {loading ? 
-        //     <div> Order has not yet been fetched! </div>
-        //     : <div style={{ margin:'100px 500px'}}>
-        //         {Prank.map((Prank) => {
+      const { prankId } = useParams();
+    
+      const { loading, data } = useQuery(QUERY_PRANK, {
+        variables: { prankId: prankId },
+      });
+    
+      const viewPrank = data?.viewPrank|| {};
+      console.log(data);
+    
+      if (loading) {
+        return <div>Loading...</div>;
+      }
     return (
         <Container style={{ textAlign: 'center'}}>
         <div>
@@ -53,7 +56,8 @@ const OrderForm = () => {
             </div>
             <div>
             <h3 style={{fontSize: '30px', marginTop: '30px' }}>Prank Being Ordered</h3>
-            <p>{Prank.title}Prank Title Goes Here</p>
+            <p>{viewPrank.title}</p>
+            <p>Prank Price : ${viewPrank.price}.00</p>
             </div>
             <button style={{marginTop: '30px',  backgroundColor: 'lightBlue', border: 'solid black', borderRadius: '1rem', padding: '10px', marginLeft: '30px'}} type="submit" 
             disabled={loading}
@@ -65,11 +69,6 @@ const OrderForm = () => {
         </div>
         </Container>
       )
-//     })}
-// </div>
-// }
-// </div>
-// )
-
+    
 };
 export default OrderForm;
