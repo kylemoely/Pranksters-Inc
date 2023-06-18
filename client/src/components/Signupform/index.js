@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
-import { Button, Container } from 'react-bootstrap';
+import { Button, Container, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const SignupForm = () => {
   });
 
   const [signupUser, { loading, error }] = useMutation(ADD_USER);
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,6 +36,9 @@ const SignupForm = () => {
       });
 
       console.log('Signed up successfully:', data);
+
+      // Redirect to the pranks page
+      navigate('/pranks');
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +49,9 @@ const SignupForm = () => {
       <div>
         <form style={{ margin: '150px' }} onSubmit={handleSubmit}>
           <div>
-            <label style={{margin: '120px'}} htmlFor="username">Username :</label>
+            <label style={{ margin: '120px' }} htmlFor="username">
+              Username:
+            </label>
             <input
               type="text"
               id="username"
@@ -55,7 +62,9 @@ const SignupForm = () => {
             />
           </div>
           <div style={{ marginTop: '20px' }}>
-            <label style={{margin: '135px'}} htmlFor="email">Email :</label>
+            <label style={{ margin: '135px' }} htmlFor="email">
+              Email:
+            </label>
             <input
               type="email"
               id="email"
@@ -66,7 +75,9 @@ const SignupForm = () => {
             />
           </div>
           <div style={{ marginTop: '20px' }}>
-            <label style={{margin: '120px'}} htmlFor="password">Password :</label>
+            <label style={{ margin: '120px' }} htmlFor="password">
+              Password:
+            </label>
             <input
               type="password"
               id="password"
@@ -76,10 +87,20 @@ const SignupForm = () => {
               style={{ border: 'solid black', width: '200px' }}
             />
           </div>
-          <Button style={{marginTop: '30px',  backgroundColor: 'lightBlue', border: 'solid black', borderRadius: '1rem', padding: '10px'}} type="submit" disabled={loading}>
+          <Button
+            style={{
+              marginTop: '30px',
+              backgroundColor: 'lightBlue',
+              border: 'solid black',
+              borderRadius: '1rem',
+              padding: '10px',
+            }}
+            type="submit"
+            disabled={loading}
+          >
             Sign Up
           </Button>
-          {error && <p>Error: {error.message}</p>}
+          {error && <Alert variant="danger">Error: {error.message}</Alert>}
         </form>
       </div>
     </Container>
