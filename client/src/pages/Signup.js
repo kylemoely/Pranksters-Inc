@@ -4,7 +4,7 @@ import SignupForm from '../components/Signupform/index';
 const Signup = () => {
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1 style={{ fontSize: '50px' }}>Signup Page</h1>
+      <h1 style={{ fontSize: '50px' }}>Sign up</h1>
       <SignupForm />
     </div>
   );
