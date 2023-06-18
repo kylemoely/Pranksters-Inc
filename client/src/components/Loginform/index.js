@@ -53,7 +53,7 @@ const LoginForm = () => {
         <button style={{marginTop: '30px',  backgroundColor: 'lightBlue', border: 'solid black', borderRadius: '1rem', padding: '10px', marginLeft: '30px'}} type="submit" disabled={loading}>
           Log In
         </button>
-        {error && <p style={{marginTop: '40px'}}>Error: {error.message}</p>}
+        {error && <p style={{marginTop: '30px'}}>Error: {error.message}</p>}
       </form>
     </div>
     </Container>
