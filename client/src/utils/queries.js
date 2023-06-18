@@ -25,7 +25,7 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_PRANK = gql`
-  query Query($prankId: ID!) {
+  query getSinglePrank($prankId: ID!) {
     viewPrank(prankId: $prankId) {
       _id
       description
