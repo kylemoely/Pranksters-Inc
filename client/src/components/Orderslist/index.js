@@ -3,7 +3,7 @@ import { QUERY_USER_ORDERS } from '../../utils/queries';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import { Card, Row, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 // const Orderslist = () => {
 //     const { loading: ordersLoading, error: ordersError, data: orderData } = useQuery(QUERY_USER_ORDERS, {
