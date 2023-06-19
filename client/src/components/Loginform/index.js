@@ -57,7 +57,7 @@ const LoginForm = () => {
           />
         </div>
         <button style={{marginTop: '30px',  backgroundColor: 'lightBlue', border: 'solid black', borderRadius: '1rem', padding: '10px', marginLeft: '30px'}} type="submit" disabled={loading}>
-          Browse Pranks
+          Login
         </button>
         {/* {error && <p style={{marginTop: '30px'}}>Error: {error.message}</p>} */}
       </form>
