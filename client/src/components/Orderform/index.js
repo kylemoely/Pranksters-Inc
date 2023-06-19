@@ -5,15 +5,6 @@ import { useParams } from 'react-router-dom';
 import { ADD_ORDER } from '../../utils/mutations';
 import { QUERY_PRANK } from '../../utils/queries';
 import { useNavigate } from 'react-router-dom';
-// import { QUERY_PRANK } from '../../utils/queries';
-// import { useMutation } from '@apollo/client';
-
-// const OrderForm = () => {
-//   const [formData, setFormState] = useState({
-//     prankee: '',
-//     location: '',
-//     dateTime: '',
-//   });
 
 const OrderForm = () => {
   const [formData, setFormData] = useState({
@@ -22,21 +13,6 @@ const OrderForm = () => {
     dateTime: '',
     user: '',
   });
-
-  // const [addOrder, { error }] = useMutation(ADD_ORDER, {
-  //   update(cache, { data: { addOrder } }) {
-  //     try {
-  //       const { viewUserOrders } = cache.readQuery({ query: QUERY_USER_ORDERS });
-
-  //       cache.writeQuery({
-  //         query: QUERY_USER_ORDERS,
-  //         data: { viewUserOrders: [addOrder, ...viewUserOrders] },
-  //       });
-  //     } catch (e) {
-  //       console.error(error)
-  //     }
-  //   },
-  // })
 
   const [addOrder, { loading1 }] = useMutation(ADD_ORDER);
   const navigate = useNavigate(); 
