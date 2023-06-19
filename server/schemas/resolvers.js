@@ -56,11 +56,7 @@ const resolvers = {
         },
         deleteOrder: async (_, { orderId }) => {
             const order = await Order.findOne({ _id: orderId });
-            const user = await User.findOneAndUpdate(
-                { _id: order.user._id },
-                { $pull: { orders: orderId } },
-                { new: true }
-            );
+           
 
             return await Order.findOneAndDelete({ _id: orderId });
         },
