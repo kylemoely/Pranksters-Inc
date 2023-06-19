@@ -10,7 +10,7 @@ const LoginForm = () => {
     email: '',
     password: '',
   });
-  const { loading, error, data } = useQuery(QUERY_USER, {
+  const { loading, data } = useQuery(QUERY_USER, {
     variables: {
       email: formData.email,
       password: formData.password,
