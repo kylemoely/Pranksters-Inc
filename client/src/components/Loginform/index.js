@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries';
 import { Container } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,8 @@ const LoginForm = () => {
       password: formData.password,
     },
   });
+
+  const navigate = useNavigate(); // Initialize useNavigate hook
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -22,6 +26,8 @@ const LoginForm = () => {
     try {
       // You can access the login user data from the `data` variable
       console.log('Logged in successfully:', data);
+
+      navigate('/pranks');
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +59,7 @@ const LoginForm = () => {
         <button style={{marginTop: '30px',  backgroundColor: 'lightBlue', border: 'solid black', borderRadius: '1rem', padding: '10px', marginLeft: '30px'}} type="submit" disabled={loading}>
           Log In
         </button>
-        {error && <p style={{marginTop: '30px'}}>Error: {error.message}</p>}
+        {/* {error && <p style={{marginTop: '30px'}}>Error: {error.message}</p>} */}
       </form>
     </div>
     </Container>
