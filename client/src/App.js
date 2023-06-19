@@ -41,7 +41,7 @@ function App() {
             path="/pranks/:prankId"
             element={<Orderform />} /> 
             <Route 
-            path="/orders"
+            path="/orders/:userId"
             element={<Orders />} /> 
           </Routes>
         </div>
