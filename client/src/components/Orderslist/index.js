@@ -15,7 +15,11 @@ const Orderslist = () => {
   const [updateOrder] = useMutation(UPDATE_ORDER);
   const [deleteOrder] = useMutation(DELETE_ORDER);
 
-  const [editedOrder, setEditedOrder] = useState(null);
+  const [editedOrder, setEditedOrder] = useState({
+    prankee: '',
+    location: '',
+    dateTime: '',
+  });
 
   if (ordersError) {
     return <div>Error: No orders found!</div>;
@@ -44,12 +48,6 @@ const Orderslist = () => {
   const handleSaveChanges = async (e) => {
     e.preventDefault();
 
-    const confirmSave = window.confirm('Are you sure you want to save the changes?');
-    if (!confirmSave) {
-      return;
-    }
-
-    // Update the edited order with the new values
     const updatedOrder = {
       ...editedOrder,
       prankee: editedOrder.prankee,
@@ -57,13 +55,17 @@ const Orderslist = () => {
       location: editedOrder.location,
     };
 
+    const confirmSave = window.confirm('Are you sure you want to save the changes?');
+    if (!confirmSave) {
+      return updatedOrder;
+    }
+
     try {
       const { data } = await updateOrder({
-        variables: { orderId: updatedOrder._id, input: updatedOrder },
+        variables: { orderId: updatedOrder._id, location: updatedOrder.location, dateTime: updatedOrder.dateTime, prankee: updatedOrder.prankee },
       });
 
       console.log(`Order updated: ${data.updateOrder._id}`);
-
       // Find the index of the updated order in the orders array
       const updatedOrderIndex = orders.findIndex((order) => order._id === updatedOrder._id);
 
@@ -71,7 +73,7 @@ const Orderslist = () => {
       const updatedOrders = [...orders];
       updatedOrders[updatedOrderIndex] = data.updateOrder;
 
-      setEditedOrder(null);
+      setEditedOrder();
     } catch (error) {
       console.error('Error updating order:', error);
     }
@@ -159,9 +161,6 @@ const Orderslist = () => {
                       <Card.Text>Prankee: {order.prankee}</Card.Text>
                       <Card.Text>Time: {order.dateTime}</Card.Text>
                       <Card.Text>Location: {order.location}</Card.Text>
-                      <Card.Text>Prank Description: {order.prank.description}</Card.Text>
-                      <Card.Text>Prank Price: {order.prank.price}</Card.Text>
-                      <Card.Text>Order Quantity: {order.quantity}</Card.Text>
                       <Button
                         style={{
                           border: 'solid black',
