@@ -4,6 +4,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { ADD_ORDER } from '../../utils/mutations';
 import { QUERY_PRANK } from '../../utils/queries';
+import { useNavigate } from 'react-router-dom';
 // import { QUERY_PRANK } from '../../utils/queries';
 // import { useMutation } from '@apollo/client';
 
@@ -38,7 +39,7 @@ const OrderForm = () => {
   // })
 
   const [addOrder, { loading1 }] = useMutation(ADD_ORDER);
-
+  const navigate = useNavigate(); 
 
 
 
@@ -48,6 +49,9 @@ const OrderForm = () => {
     variables: { prankId: prankId },
   });
 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   const viewPrank = data?.viewPrank || {};
 
 
@@ -71,13 +75,11 @@ const OrderForm = () => {
         user: '',
       });
       console.log('Order Submited', data);
+
+      navigate(`/orders/${formData.user}`);
     } catch (err) {
       console.log(err);
     }
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   if (loading1) {

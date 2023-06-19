@@ -1,5 +1,5 @@
 import {React} from 'react';
-import Orderslist from '../components/Orderslist'
+import Orderslist from '../components/Orderslist';
 import { QUERY_USER_ORDERS } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 
