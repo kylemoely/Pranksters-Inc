@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
-import { Button, Container, Alert } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
@@ -11,7 +11,7 @@ const SignupForm = () => {
     password: '',
   });
 
-  const [signupUser, { loading, error }] = useMutation(ADD_USER);
+  const [signupUser, { loading }] = useMutation(ADD_USER);
   const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleChange = (e) => {
@@ -38,7 +38,7 @@ const SignupForm = () => {
       console.log('Signed up successfully:', data);
 
       // Redirect to the pranks page
-      navigate('/pranks');
+      navigate('/login');
     } catch (error) {
       console.log(error);
     }
@@ -100,7 +100,7 @@ const SignupForm = () => {
           >
             Sign Up
           </Button>
-          {error && <Alert variant="danger">Error: {error.message}</Alert>}
+          {/* {error && <Alert variant="danger">Error: {error.message}</Alert>} */}
         </form>
       </div>
     </Container>
