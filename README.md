@@ -60,7 +60,6 @@
 #### Kyle Moellenkamp
 - OrderList
 - Queries/Mutations
-- Stripe
 - Schemas
 
 #### Jack Burke
@@ -78,22 +77,22 @@
 ## Test
   Test Data for website:
 
-     Id:
+     Id: ObjectId('64910a824c21ffb56797a479')
      username: DinoSpumoni
      email: dinocats@gmail.com
      password: password
 
-      Id:
+      Id: ObjectId('64910a824c21ffb56797a47a')
      username: prankdaddy
      email: merrypranks@gmail.com
      password: password
 
-      Id:
+      Id: ObjectId('64910a824c21ffb56797a47b')
      username: TomBombadill
      email: lotrfan33@gmail.com
      password: password
 
-      Id:
+      Id: ObjectId('64910a824c21ffb56797a47c')
      username: ICanCode
      email: htmlmaster@gmail.com
      password: password
