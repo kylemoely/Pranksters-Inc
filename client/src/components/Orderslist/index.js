@@ -108,39 +108,44 @@ const Orderslist = () => {
                   {isEditing ? (
                     <Form onSubmit={(e) => handleSaveChanges(e)}>
                       {/* Display editable form fields */}
-                      <Form.Group controlId="formPrankee">
-                        <Form.Label>Prankee</Form.Label>
+                      <Form.Group controlId="formPrankee" style={{ marginTop: '20px' }}>
+                        <Form.Label style={{ margin: '50px' }}>Prankee :</Form.Label>
                         <Form.Control
                           type="text"
                           placeholder="Enter prankee name"
                           value={editedOrder.prankee}
                           onChange={(e) => handleEditInputChange('prankee', e.target.value)}
+                          style={{ border: 'solid black', width: '200px' }}
                         />
                       </Form.Group>
-                      <Form.Group controlId="formDateTime">
-                        <Form.Label>Time and Date</Form.Label>
+                      <Form.Group controlId="formDateTime" style={{ marginTop: '20px' }}>
+                        <Form.Label style={{ margin: '30px' }}>Time and Date :</Form.Label>
                         <Form.Control
                           type="text"
                           placeholder="Enter time and date"
                           value={editedOrder.dateTime}
                           onChange={(e) => handleEditInputChange('dateTime', e.target.value)}
+                          style={{ border: 'solid black', width: '200px' }}
                         />
                       </Form.Group>
-                      <Form.Group controlId="formLocation">
-                        <Form.Label>Location</Form.Label>
+                      <Form.Group controlId="formLocation" style={{ marginTop: '20px' }}>
+                        <Form.Label style={{ margin: '50px' }}>Location :</Form.Label>
                         <Form.Control
                           type="text"
                           placeholder="Enter location"
                           value={editedOrder.location}
                           onChange={(e) => handleEditInputChange('location', e.target.value)}
+                          style={{ border: 'solid black', width: '200px' }}
                         />
                       </Form.Group>
                       <Button
                         style={{
                           border: 'solid black',
                           borderRadius: '1rem',
-                          backgroundColor: 'lightGreen',
+                          backgroundColor: 'lightBlue',
                           marginRight: '10px',
+                          padding: '5px',
+                          marginTop: '30px'
                         }}
                         variant="primary"
                         type="submit"
@@ -148,7 +153,7 @@ const Orderslist = () => {
                         Save
                       </Button>
                       <Button
-                        style={{ border: 'solid black', borderRadius: '1rem', backgroundColor: 'lightGreen' }}
+                        style={{ border: 'solid black', borderRadius: '1rem', backgroundColor: 'lightBlue', padding: '5px', marginTop: '30px' }}
                         variant="primary"
                         onClick={() => handleCancelEdit()}
                       >
