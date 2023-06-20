@@ -15,7 +15,6 @@ const userSchema = new mongoose.Schema({
     trim: true,
     validate: {
       validator: (value) => {
-        // Regular expression to validate email format
         const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
         return emailRegex.test(value);
       },
