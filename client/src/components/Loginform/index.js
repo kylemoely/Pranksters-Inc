@@ -17,14 +17,13 @@ const LoginForm = () => {
     },
   });
 
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate(); 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // You can access the login user data from the `data` variable
       console.log('Logged in successfully:', data);
 
       navigate('/pranks');

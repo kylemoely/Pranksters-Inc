@@ -12,7 +12,7 @@ const SignupForm = () => {
   });
 
   const [signupUser, { loading }] = useMutation(ADD_USER);
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,7 +37,6 @@ const SignupForm = () => {
 
       console.log('Signed up successfully:', data);
 
-      // Redirect to the pranks page
       navigate('/login');
     } catch (error) {
       console.log(error);
