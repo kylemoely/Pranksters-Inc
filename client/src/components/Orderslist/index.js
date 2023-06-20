@@ -64,12 +64,9 @@ const Orderslist = () => {
       const { data } = await updateOrder({
         variables: { orderId: updatedOrder._id, location: updatedOrder.location, dateTime: updatedOrder.dateTime, prankee: updatedOrder.prankee },
       });
-
       console.log(`Order updated: ${data.updateOrder._id}`);
-      // Find the index of the updated order in the orders array
+      
       const updatedOrderIndex = orders.findIndex((order) => order._id === updatedOrder._id);
-
-      // Replace the old order with the updated order in the orders array
       const updatedOrders = [...orders];
       updatedOrders[updatedOrderIndex] = data.updateOrder;
 
@@ -78,7 +75,7 @@ const Orderslist = () => {
       console.error('Error updating order:', error);
     }
   };
-
+  
   const handleEditInputChange = (field, value) => {
     setEditedOrder((prevOrder) => ({
       ...prevOrder,
